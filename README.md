@@ -18,7 +18,7 @@ A Windows GUI app that downloads Blackboard Ultra course files into your chosen 
 
 ## Installation
 
-Requires Windows 11 and internet access.
+Designed for Windows and requires internet access.
 
 1. Download the packaged ZIP from [Releases](https://github.com/RiyanJamy/Blackboard-Sync-Desktop/releases).
 2. Extract the entire ZIP.
