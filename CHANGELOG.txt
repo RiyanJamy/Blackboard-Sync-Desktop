@@ -1,0 +1,20 @@
+BLACKBOARD SYNC DESKTOP v0.2.3
+Developed by Riyan Hashem Jamy - https://RiyanJamy.github.io
+
+Included fixes and features:
+- Course/destination GUI, selected content and assignment filters.
+- Default 50 MB limit for new courses, configurable unknown-size handling.
+- Failed transfers/listings and size exclusions combined in Manual Downloads.
+- Direct file links, local filename presence checks, manual arrival recognition.
+- Backups before replacement; unchanged remote versions are skipped.
+- 120-second GET timeout with one retry; rate-limit failures stop rather than loop.
+- Disable Schedule handles nonexistent tasks; Start Over preserves downloaded files.
+- Saved institution URL is restored correctly when reopening the app.
+- Single-file updater explicitly loads ZIP assemblies and validates exact filenames.
+- Developer credits, portfolio, upstream MIT license and guide included.
+
+Verification:
+- Simulated sync, filters, backups, rename and manual recovery tests passed.
+- Python compilation, archive integrity, update allowlist/payload checks passed.
+- Windows schedule outcomes checked with mocked subprocess results.
+- Windows end-to-end GUI/install/task verification remains required.

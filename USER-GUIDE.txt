@@ -1,0 +1,142 @@
+BLACKBOARD SYNC DESKTOP - v0.2.3
+Developed by Riyan Hashem Jamy
+Portfolio: https://RiyanJamy.github.io
+
+1. INSTALLATION
+Extract the entire ZIP. Double-click Install.cmd in the BlackboardSync folder.
+Click Install, wait for the components to download, then click Open App.
+The installer reuses Python 3.11+ with desktop support when available. Otherwise
+it uses Windows winget to install Python 3.12 for your account. Git is not required.
+If winget is unavailable, install Python 3.11+ from python.org, then retry.
+Desktop and Start Menu shortcuts are created. Windows/security prompts may occur.
+
+2. CONNECT AND CHOOSE COURSES
+Enter your institution's HTTPS Blackboard URL; KFUPM is the initial default.
+Click Sign in / Re-login and complete login/MFA in the browser window.
+Click each required course, select Choose Folder, and enable it.
+Use separate, non-overlapping folders for courses. OneDrive folders work if the
+OneDrive desktop client is installed and uploading normally. Save Choices.
+Your institution URL and settings are retained when reopening the app.
+To change institution after courses have loaded, use Start Over first.
+
+3. CHOOSE WHAT TO DOWNLOAD
+Content Options for each course:
+- Course materials: supported slides, notes, documents and other attachments.
+- Assignment attachments: items Blackboard identifies as assignments/assessments.
+  The app does not submit assignments, export grades or download quiz questions.
+- Only selected folders/items: restrict sync to the selection from Choose Content.
+Choose Content loads the course tree. Double-click folders/items to select them.
+Selecting a folder includes future uploads beneath it. New unselected top-level
+folders are not included. Category exclusions still apply inside selected folders.
+Click Use Selected Items, then Save Choices. Deselection never deletes local files.
+
+4. SIZE FILTER
+New courses default to a 50 MB limit (1 MB = 1,048,576 bytes).
+Existing saved limits are preserved on update, including 0 (no limit).
+Change Maximum file size in Content Options. Apply to Form, then Save Choices.
+Files above the reported limit are routed to Manual Downloads.
+Skip unknown sizes is enabled by default when a limit is active. If attachment
+metadata has no size, the app tries a HEAD request without downloading the body.
+If the size still cannot be determined, the file is routed to Manual Downloads.
+Size unavailable does not mean a file is large.
+To allow unknown sizes, uncheck that option. To disable size filtering, use 0.
+This filter is not a hard bandwidth quota. If the server reports an incorrect size,
+the transfer may finish before the app measures it. An oversized result is discarded
+without replacing your existing local copy.
+
+5. SYNC AND DAILY SCHEDULE
+Save and close slides on your iPad/other devices, then let OneDrive finish syncing.
+Click Sync Now. New files download; identical initial copies are left untouched.
+Blackboard subfolders are preserved beneath each destination. Flat existing files
+may coexist with matching files under those subfolders.
+For daily runs choose a time such as 19:00 and click Enable Daily Sync.
+Time follows Windows timezone; for Saudi 7 pm use Riyadh timezone and 19:00.
+The computer needs internet and Windows signed in. Missed runs start when available.
+Disable Schedule succeeds even if a task was never created or was already removed.
+A genuine Windows deletion error is shown rather than pretending a task was removed.
+
+6. ANNOTATIONS AND FILE UPDATES
+Before replacing a differing existing file, the app saves its current copy into
+_bbsync_backups beside it. Backups retain SAVED annotations; they are not merged
+into revised slide decks. Nothing is automatically deleted.
+Avoid simultaneous editing while syncing. Let OneDrive upload before reopening
+files on another device. A local app cannot fully prevent cross-device edit races.
+Later unchanged Blackboard content timestamps are skipped even if you annotate
+locally. Updated-file detection depends on Blackboard reporting modified timestamps.
+Missing timestamps may require repeat comparisons; undisclosed changes may be missed.
+An unchanged renamed tracked file is recovered by hash if the match is unique.
+Renaming and annotating together may make automatic recovery impossible.
+
+7. MANUAL DOWNLOADS - FAILURES AND EXCLUSIONS
+Manual Downloads contains size-skipped files and failed file/folder/listing requests.
+A known file has a direct API download link. A failed listing has only a course
+outline link because the app could not retrieve individual filenames.
+Your regular browser must be signed in. If the direct link is rejected, open the
+course normally and locate the named item. University permissions still apply.
+Download / Open Item opens the link. Copy Link copies it.
+Local status searches within the course destination by filename, excluding backups.
+Already present does NOT verify content or prove the copy is the latest version.
+
+NEW MANUAL COPY: if no matching filename existed when the failure/exclusion was
+recorded, save a permitted download with its original name anywhere inside the
+course destination. The next sync checks that Blackboard's reported timestamp is
+still the recorded one and adopts one unique matching filename without re-downloading.
+This is filename-based recognition, not remote content verification.
+
+PRE-EXISTING COPY: Use Existing Copy and confirm that it is the current version.
+Multiple matching names require choosing the correct file. Choose Downloaded File
+lets you select a saved download; differing destination copies are backed up.
+An annotation edit to an old file is never silently accepted as a remote update.
+Refresh rescans the local folders. Sync Now retries failures. Successful file
+recovery removes its queue entry. Folder/listing entries resolve after a successful
+listing. Existing local folders do not prove their contents were fully synchronized.
+
+OVERRIDE THE APP'S SIZE FILTER: increase the limit or set 0, Save Choices, then
+Sync Now. Changed size policy retries prior size exclusions. Manual recovery overrides
+this app's limit only; it cannot make restricted/view-only materials downloadable.
+
+8. LOGIN AND TIMEOUTS
+Sign in / Re-login clears stale cookie snapshots and opens the login browser.
+Sync Now offers login recovery and resumes afterward. Failed scheduled runs open
+the app so you can sign in or inspect the problem. University password/PIN/MFA
+requirements and session expiration cannot be bypassed.
+File/content GET requests allow 120 seconds and retry a timeout once. Failed file
+or folder requests are queued for manual recovery while other accessible content
+continues. Requests are sequential with a one-second delay. HTTP 429 stops the run.
+Longer timeouts cannot fix a permanently stalled connection.
+EACCES indicates a denied connection. Check normal browser downloads and your
+network/security settings; it does not by itself establish an account block.
+The app strips cookie-bearing Playwright call logs from displayed errors.
+
+9. UPDATE / START OVER / UNINSTALL
+UPDATE: close the app and run Update-Blackboard-Sync-v0.2.3-FIXED.cmd. It locates
+and updates the installed GUI app, backs up code and preserves the separate data
+folder. No ZIP from the old installation is needed. Reopen the desktop shortcut.
+Reinstalling through Install.cmd also preserves app data. Do not run both updaters
+or leave an active sync running during installation.
+START OVER: disables the daily task, resets course choices and login, and archives
+the old browser profile locally. Downloaded files, backups and history are preserved.
+Changing a destination leaves old files in place; it does not move them for you.
+UNINSTALL: disable the daily task, close the app, delete the program directory and
+its desktop/Start Menu shortcuts. Keep the data directory to retain setup/history.
+OneDrive course folders are separate and are never part of uninstall.
+
+10. LOCATIONS AND PRIVACY
+Program: %LOCALAPPDATA%\BlackboardSync\program
+Private data: %LOCALAPPDATA%\BlackboardSync\data
+Code backups: %LOCALAPPDATA%\BlackboardSync\code-backup-<timestamp>
+Logs: data\activity.log; install.log is in the parent BlackboardSync folder.
+Do not share cookie files, browser profiles or the private data folder.
+The app's settings are separate from the older C:\bbsync command-line installation.
+Do not sync both installations against the same folders simultaneously.
+Disable any older scheduled tasks before enabling this app's daily task.
+
+11. RELEASE STATUS / CREDITS
+Source release with Windows installer; not a signed standalone EXE.
+Simulated backend tests cover filters, retries, backups, rename detection, manual
+recovery and schedule-status handling. Windows GUI, installer and institution-specific
+authentication still require end-to-end verification. No universal compatibility
+or institutional approval is implied.
+Developed by Riyan Hashem Jamy. Portfolio: https://RiyanJamy.github.io
+Based on sammyschen/bbsync, https://github.com/sammyschen/bbsync (MIT).
+Original copyright and license are retained in LICENSE. See CREDITS.txt.

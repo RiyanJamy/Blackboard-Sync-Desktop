@@ -1,0 +1,20 @@
+BLACKBOARD SYNC DESKTOP
+Developed by Riyan Hashem Jamy
+Portfolio: https://RiyanJamy.github.io
+
+Desktop application, GUI setup workflow, Windows installer, course-to-folder
+configuration, scheduling and customized sync features.
+
+UPSTREAM PROJECT
+Based on bbsync by sammyschen:
+https://github.com/sammyschen/bbsync
+Licensed under the MIT License. The original copyright and license notice
+are retained without modification in LICENSE.
+
+THIRD-PARTY COMPONENTS
+Uses Python, Tcl/Tk and Playwright. These projects retain their respective
+copyrights and licenses; their installed distributions include license notices.
+
+Blackboard, Microsoft OneDrive and other product names belong to their respective
+owners. This independent application is not an official university, Blackboard,
+or Microsoft product.
