@@ -108,12 +108,7 @@ EACCES indicates a denied connection. Check normal browser downloads and your
 network/security settings; it does not by itself establish an account block.
 The app strips cookie-bearing Playwright call logs from displayed errors.
 
-9. UPDATE / START OVER / UNINSTALL
-UPDATE: close the app and run Update-Blackboard-Sync-v0.2.3-FIXED.cmd. It locates
-and updates the installed GUI app, backs up code and preserves the separate data
-folder. No ZIP from the old installation is needed. Reopen the desktop shortcut.
-Reinstalling through Install.cmd also preserves app data. Do not run both updaters
-or leave an active sync running during installation.
+9. START OVER / UNINSTALL
 START OVER: disables the daily task, resets course choices and login, and archives
 the old browser profile locally. Downloaded files, backups and history are preserved.
 Changing a destination leaves old files in place; it does not move them for you.
@@ -127,8 +122,6 @@ Private data: %LOCALAPPDATA%\BlackboardSync\data
 Code backups: %LOCALAPPDATA%\BlackboardSync\code-backup-<timestamp>
 Logs: data\activity.log; install.log is in the parent BlackboardSync folder.
 Do not share cookie files, browser profiles or the private data folder.
-The app's settings are separate from the older C:\bbsync command-line installation.
-Do not sync both installations against the same folders simultaneously.
 Disable any older scheduled tasks before enabling this app's daily task.
 
 11. RELEASE STATUS / CREDITS
